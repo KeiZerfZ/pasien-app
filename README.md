@@ -1,61 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Aplikasi Data Pasien
+Sebuah aplikasi web sederhana untuk mengelola data pasien, dibangun menggunakan framework Laravel. Aplikasi ini menyediakan fitur dasar Create, Read, Update, Delete (CRUD) untuk data pasien, dilengkapi dengan penanganan alamat bertingkat, riwayat penyakit dan asuransi dinamis, serta upload foto pasien.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Fitur Utama
+Manajemen Pasien (CRUD):
 
-## About Laravel
+Tambah Pasien: Input data pasien baru dengan validasi lengkap.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Lihat Detail Pasien: Menampilkan informasi lengkap pasien, termasuk riwayat penyakit, asuransi, dan foto.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Edit Pasien: Memperbarui data pasien yang sudah ada, dengan mempertahankan data riwayat dan asuransi yang dinamis. Tanggal lahir pasien tidak dapat diubah setelah input awal.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Hapus Pasien: Menghapus data pasien beserta riwayat dan data asuransi terkait.
 
-## Learning Laravel
+Alamat Bertingkat: Dropdown dinamis untuk Provinsi, Kota/Kabupaten, Kecamatan, dan Desa/Kelurahan, memastikan input alamat yang akurat.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Riwayat Penyakit Dinamis: Kemampuan untuk menambahkan lebih dari satu riwayat penyakit (nama penyakit dan tahun) pada setiap pasien.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Data Asuransi Dinamis: Kemampuan untuk menambahkan lebih dari satu data asuransi (jenis asuransi dan nomor asuransi) pada setiap pasien.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Upload Foto Pasien: Fitur upload gambar (.jpg/.png) untuk foto pasien, dengan penanganan penyimpanan file yang aman.
 
-## Laravel Sponsors
+Validasi Formulir: Validasi sisi server yang komprehensif untuk memastikan integritas data.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Teknologi yang Digunakan
+PHP
 
-### Premium Partners
+Laravel Framework (versi terbaru)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+MySQL / MariaDB (sebagai database)
 
-## Contributing
+Composer (untuk manajemen dependensi PHP)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Tailwind CSS (untuk styling UI yang responsif)
 
-## Code of Conduct
+JavaScript / AJAX (untuk fungsionalitas dropdown alamat dinamis)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Panduan Instalasi dan Setup
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek ini di lingkungan lokal Anda:
 
-## Security Vulnerabilities
+Clone Repositori:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+git clone https://github.com/USERNAME_ANDA/NAMA_REPOSITORI_ANDA.git
+cd NAMA_REPOSITORI_ANDA
 
-## License
+(Ganti USERNAME_ANDA dan NAMA_REPOSITORI_ANDA sesuai dengan repositori GitHub Anda).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Instal Dependensi Composer:
+
+composer install
+
+Buat File .env:
+
+cp .env.example .env
+
+Atur Kunci Aplikasi:
+
+php artisan key:generate
+
+Konfigurasi Database di .env:
+Buka file .env dan sesuaikan pengaturan database Anda:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pasien-app # Pastikan nama database ini sudah Anda buat di phpMyAdmin/MariaDB
+DB_USERNAME=root      # Sesuaikan dengan username database Anda
+DB_PASSWORD=          # Sesuaikan dengan password database Anda
+APP_URL=http://127.0.0.1:8000 # Atau sesuaikan dengan URL local Anda (misal: http://localhost/pasien-app/public)
+SESSION_DRIVER=database # Pastikan ini diatur ke 'database'
+
+Buat Database di phpMyAdmin/MariaDB:
+Buka http://localhost/phpmyadmin (atau sejenisnya) dan buat database baru dengan nama yang sama dengan DB_DATABASE di .env (contoh: pasien-app).
+
+Jalankan Migrasi Database dan Seeder:
+Perintah ini akan membuat semua tabel yang diperlukan dan mengisi data awal (pekerjaan, jenis asuransi, data alamat Kalimantan Barat):
+
+php artisan migrate:fresh --seed
+
+Catatan: Jika Anda mengalami error Table 'pasien-app.sessions' doesn't exist, jalankan php artisan session:table terlebih dahulu, lalu ulangi php artisan migrate:fresh --seed.
+
+Buat Symlink untuk Penyimpanan Foto:
+Ini memungkinkan foto yang di-upload dapat diakses melalui web. Jalankan Command Prompt/PowerShell sebagai Administrator jika Anda di Windows.
+
+php artisan storage:link
+
+Jika ada error The [public/storage] link already exists., abaikan saja, berarti symlink sudah ada.
+
+Bersihkan Cache Laravel:
+
+php artisan optimize:clear
+
+Jalankan Server Pengembangan:
+
+php artisan serve
+
+Cara Menggunakan Aplikasi
+Setelah server berjalan, buka browser Anda dan akses URL berikut:
+
+http://127.0.0.1:8000
+
+(Atau sesuai dengan URL yang diberikan oleh php artisan serve atau konfigurasi server web Anda).
+
+Anda akan diarahkan langsung ke halaman daftar pasien. Dari sana, Anda dapat:
+
+Melihat daftar pasien yang sudah ada.
+
+Mengklik "Tambah Pasien Baru" untuk mengisi formulir input.
+
+Mengklik "Detail", "Edit", atau "Hapus" pada setiap baris pasien untuk mengelola data.
+
+Kontribusi
+Kontribusi disambut baik! Jika Anda memiliki ide atau perbaikan, silakan:
+
+Fork repositori ini.
+
+Buat branch baru (git checkout -b feature/nama-fitur).
+
+Lakukan perubahan Anda dan commit (git commit -m 'Tambahkan fitur X').
+
+Push ke branch Anda (git push origin feature/nama-fitur).
+
+Buat Pull Request.
+
+Lisensi
+Proyek ini dilisensikan di bawah Lisensi MIT.
